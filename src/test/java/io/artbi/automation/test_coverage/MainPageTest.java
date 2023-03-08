@@ -1,55 +1,72 @@
 package io.artbi.automation.test_coverage;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.artbi.automation.test_coverage.webdriver.listener.LocatorListener;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.*;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.IOException;
 
-import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 
 public class MainPageTest {
+    private LocatorListener locatorsListener;
     MainPage mainPage = new MainPage();
 
     @BeforeAll
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
+        Configuration.holdBrowserOpen = false;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @BeforeEach
     public void setUp() {
-        open("https://www.jetbrains.com/");
+        open();
+        WebDriver driver = WebDriverRunner.getWebDriver();
+        final EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
+        locatorsListener = new LocatorListener();
+        eventFiringWebDriver.register(locatorsListener);
+        WebDriverRunner.setWebDriver(eventFiringWebDriver);
+        open(MainPage.URL);
     }
 
     @Test
     public void search() {
-        mainPage.searchButton.click();
+        mainPage.searchField.shouldBe(visible)
+                .setValue("werjh");
 
-        $("[data-test='search-input']").sendKeys("Selenium");
-        $("button[data-test='full-search-button']").click();
+        ElementsCollection results = mainPage.searchResult.shouldBe(visible)
+                .$$x("./li");
 
-        $("input[data-test='search-input']").shouldHave(attribute("value", "Selenium"));
+        Assertions.assertThat(results).allSatisfy(result -> {
+            result.has(text("цукор"));
+        });
+
+        results.shouldHave(sizeGreaterThan(1))
+                .get(0)
+                .click();
+
+
     }
 
-    @Test
-    public void toolsMenu() {
-        mainPage.toolsMenu.click();
 
-        $("div[data-test='main-submenu']").shouldBe(visible);
-    }
-
-    @Test
-    public void navigationToAllTools() {
-        mainPage.seeDeveloperToolsButton.click();
-        mainPage.findYourToolsButton.click();
-
-        $("#products-page").shouldBe(visible);
-
-        assertEquals("All Developer Tools and Products by JetBrains", Selenide.title());
+    @AfterEach
+    public void stopDriver() throws IOException {
+        locatorsListener.addAttachment();
     }
 }
+
+
