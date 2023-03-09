@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'io.qameta.allure' version '2.9.3'
+    id("io.freefair.lombok") version "6.6.3"
 }
 
 group 'io.artbi.automation'
@@ -28,6 +29,7 @@ dependencies {
     implementation('org.assertj:assertj-core:3.23.1')
     implementation("com.fasterxml.jackson.core:jackson-databind:2.11.0")
     implementation("org.assertj:assertj-core:3.11.1")
+    implementation('org.projectlombok:lombok:1.18.26')
     testImplementation('org.slf4j:slf4j-simple:1.7.30')
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")

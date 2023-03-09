@@ -2,19 +2,22 @@ package io.artbi.automation.test_coverage.webdriver.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Allure;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class LocatorListener implements BaseWebDriverListener {
+@Slf4j
+public class MyLocatorListener implements BaseWebDriverListener {
 
     private final List<Locator> locators;
 
-    public LocatorListener() {
+    public MyLocatorListener() {
         this.locators = new ArrayList<>();
     }
 
@@ -24,6 +27,7 @@ public class LocatorListener implements BaseWebDriverListener {
         getLocator(element).ifPresent(locator -> {
             locator.getUrls().add(driver.getCurrentUrl());
             locators.add(locator);
+            System.out.printf("Clicked on -> %s%n", locator.getFullPath());
         });
     }
 
@@ -34,6 +38,7 @@ public class LocatorListener implements BaseWebDriverListener {
         getLocator(element).ifPresent(locator -> {
             locator.getUrls().add(driver.getCurrentUrl());
             locators.add(locator);
+            System.out.printf("Changed Value on %s -> %s%n", Arrays.toString(keysToSend), locator.getFullPath());
         });
     }
 

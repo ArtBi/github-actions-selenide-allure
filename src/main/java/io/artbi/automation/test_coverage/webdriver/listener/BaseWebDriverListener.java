@@ -53,13 +53,7 @@ public interface BaseWebDriverListener extends WebDriverEventListener {
     default void beforeClickOn(WebElement element, WebDriver driver) {
     }
 
-    default void afterClickOn(WebElement element, WebDriver driver) {
-    }
-
     default void beforeChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
-    }
-
-    default void afterChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
     }
 
     default void beforeScript(String script, WebDriver driver) {
