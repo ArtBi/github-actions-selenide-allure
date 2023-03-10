@@ -2,13 +2,11 @@ package io.artbi.automation.test_coverage;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-// page_url = https://www.jetbrains.com/
 public class MainPage {
-    public SelenideElement seeDeveloperToolsButton = $x("//*[@data-test-marker='Developer Tools']");
-    public SelenideElement findYourToolsButton = $x("//*[@data-test='suggestion-action']");
-    public SelenideElement toolsMenu = $x("//div[@data-test='main-menu-item' and @data-test-marker = 'Developer Tools']");
-    public SelenideElement searchButton = $("[data-test='site-header-search-action']");
+    public static String URL = "https://rozetka.com.ua";
+    public SelenideElement searchField = $x("//input[@name='search']");
+    public SelenideElement searchButton = $x("//button[contains(@class,'search-form__submit')]");
+    public SelenideElement searchResult = $x("//div[contains(@class,'search-suggest')]/ul");
 }

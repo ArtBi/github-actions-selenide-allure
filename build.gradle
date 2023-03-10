@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'io.qameta.allure' version '2.9.3'
+    id("io.freefair.lombok") version "6.6.3"
 }
 
 group 'io.artbi.automation'
@@ -11,7 +12,7 @@ repositories {
 }
 
 ext {
-    allureVersion = '2.20.1'
+    allureVersion = '2.14.0'
     junitVersion = '5.9.1'
 }
 
@@ -23,9 +24,12 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    testImplementation('com.codeborne:selenide:6.10.1')
-    testImplementation("io.qameta.allure:allure-selenide:${allureVersion}")
-    testImplementation('org.assertj:assertj-core:3.23.1')
+    implementation('com.codeborne:selenide:6.10.1')
+    implementation("io.qameta.allure:allure-selenide:${allureVersion}")
+    implementation('org.assertj:assertj-core:3.23.1')
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.0")
+    implementation("org.assertj:assertj-core:3.11.1")
+    implementation('org.projectlombok:lombok:1.18.26')
     testImplementation('org.slf4j:slf4j-simple:1.7.30')
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
