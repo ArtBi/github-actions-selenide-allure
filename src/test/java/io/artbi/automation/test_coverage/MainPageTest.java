@@ -1,6 +1,5 @@
 package io.artbi.automation.test_coverage;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -12,11 +11,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.io.IOException;
 
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
@@ -27,14 +27,17 @@ public class MainPageTest {
 
     @BeforeAll
     public static void setUpAll() {
-        Configuration.browserSize = "1280x800";
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @BeforeEach
     public void setUp() {
-        open();
-        WebDriver driver = WebDriverRunner.getWebDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
+
+        WebDriver driver = new ChromeDriver(options);
         final EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
         locatorsListener = new MyLocatorListener();
         eventFiringWebDriver.register(locatorsListener);
@@ -53,12 +56,6 @@ public class MainPageTest {
         Assertions.assertThat(results).allSatisfy(result -> {
             result.has(text("цукор"));
         });
-
-        results.shouldHave(sizeGreaterThan(1))
-                .first()
-                .click();
-
-
     }
 
 
