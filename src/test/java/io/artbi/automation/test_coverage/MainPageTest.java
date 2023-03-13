@@ -28,7 +28,6 @@ public class MainPageTest {
     @BeforeAll
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
-        Configuration.holdBrowserOpen = false;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
@@ -56,7 +55,7 @@ public class MainPageTest {
         });
 
         results.shouldHave(sizeGreaterThan(1))
-                .get(0)
+                .first()
                 .click();
 
 
@@ -65,7 +64,10 @@ public class MainPageTest {
 
     @AfterEach
     public void stopDriver() throws IOException {
-        locatorsListener.addAttachment();
+        if (WebDriverRunner.hasWebDriverStarted()) {
+            WebDriverRunner.getWebDriver().close();
+            locatorsListener.addAttachment();
+        }
     }
 }
 
