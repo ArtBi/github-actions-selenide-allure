@@ -26,6 +26,8 @@ public class MyLocatorListener implements BaseWebDriverListener {
                              final WebDriver driver) {
         getLocator(element).ifPresent(locator -> {
             locator.getUrls().add(driver.getCurrentUrl());
+            locator.setAction("Click on");
+            element.getAccessibleName();
             locators.add(locator);
             System.out.printf("Clicked on -> %s%n", locator.getFullPath());
         });
@@ -37,8 +39,9 @@ public class MyLocatorListener implements BaseWebDriverListener {
                                    final CharSequence[] keysToSend) {
         getLocator(element).ifPresent(locator -> {
             locator.getUrls().add(driver.getCurrentUrl());
+            locator.setAction("Set Value");
             locators.add(locator);
-            System.out.printf("Changed Value on %s -> %s%n", Arrays.toString(keysToSend), locator.getFullPath());
+            System.out.printf("Set Value %s for -> %s%n", Arrays.toString(keysToSend), locator.getFullPath());
         });
     }
 
@@ -54,7 +57,7 @@ public class MyLocatorListener implements BaseWebDriverListener {
         String value = pathVariables[1].trim();
         switch (type) {
             case "xpath":
-                return Optional.of(new Locator().setType(type).setFullPath(value));
+                return Optional.of(new Locator().setType(type).setType(value));
             default:
                 return Optional.empty();
         }

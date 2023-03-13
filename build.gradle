@@ -19,8 +19,13 @@ ext {
 sourceCompatibility = '18'
 targetCompatibility = '18'
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+tasks.register('coppyExecutor', Copy) {
+    from file("allure/executor.json")
+    into file("build/allure-results")
 }
 
 dependencies {
@@ -39,6 +44,7 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
 allure {
     autoconfigure = true
     version = "${allureVersion}"
