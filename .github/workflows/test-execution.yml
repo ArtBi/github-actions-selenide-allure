@@ -23,8 +23,8 @@ jobs:
           distribution: "temurin"
       - name: Install Google Chrome
         run: |
-          chmod +x ./scripts/InstallChrome.sh
-                   ./scripts/InstallChrome.sh
+          chmod +x ./scripts/install_chrome.sh
+                   ./scripts/install_chrome.sh
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
