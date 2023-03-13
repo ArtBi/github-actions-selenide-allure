@@ -30,12 +30,8 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew clean test
 
-  allure:
-    name: Generate Allure Report
-    runs-on: ubuntu-latest
-    steps:
+#        Allure
       - uses: actions/checkout@v2
-
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
