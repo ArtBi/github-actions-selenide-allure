@@ -1,0 +1,1 @@
+[{"type":"//input[@name='search']","fullPath":null,"action":"Set Value","urls":["https://rozetka.com.ua/"]},{"type":"//input[@name='search']","fullPath":null,"action":"Set Value","urls":["https://rozetka.com.ua/"]}]

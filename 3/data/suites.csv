@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Tue Mar 14 16:18:45 GMT 2023","Tue Mar 14 16:18:55 GMT 2023","9148","","io.artbi.automation.test_coverage.MainPageTest","","io.artbi.automation.test_coverage.MainPageTest","search","search()",""

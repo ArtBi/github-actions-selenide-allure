@@ -1,1 +1,1 @@
-{"uid":"98d3104e051c652961429bf95fa0b5d6","children":[],"name":"suites"}
+{"uid":"98d3104e051c652961429bf95fa0b5d6","children":[{"name":"io.artbi.automation.test_coverage.MainPageTest","children":[{"name":"search()","uid":"9bf810dfb1add745","parentUid":"399101dc0024a88536fc6e062c44018a","status":"failed","time":{"start":1678810725959,"stop":1678810735107,"duration":9148},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":[]}],"uid":"399101dc0024a88536fc6e062c44018a"}],"name":"suites"}
