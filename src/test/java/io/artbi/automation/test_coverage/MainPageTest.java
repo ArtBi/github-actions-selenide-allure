@@ -30,7 +30,7 @@ public class MainPageTest {
     public static void setUpAll() {
         Configuration.driverManagerEnabled = false;
         Configuration.remote = "http://localhost:4444";
-        Configuration.headless = true;
+//        Configuration.headless = true;
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
