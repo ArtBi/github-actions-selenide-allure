@@ -1,5 +1,13 @@
 name: Java CI with Gradle
 on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        type: choice
+        description: Which browser to test
+        required: true
+        options:
+          - chrome:110.0
   pull_request:
     branches:
       - '*'
@@ -13,6 +21,10 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      selenium:
+        image: selenium/standalone-${{ github.event.inputs.browser }}
+        options: --shm-size=2gb
 
     steps:
       - uses: actions/checkout@v3
@@ -21,10 +33,6 @@ jobs:
         with:
           java-version: "18"
           distribution: "temurin"
-      - name: Install Google Chrome
-        run: |
-          chmod +x ./scripts/install_chrome.sh
-                   ./scripts/install_chrome.sh
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
