@@ -1,13 +1,5 @@
 name: Java CI with Gradle
 on:
-  workflow_dispatch:
-    inputs:
-      browser:
-        type: choice
-        description: Which browser to test
-        required: true
-        options:
-          - chrome:110.0
   pull_request:
     branches:
       - '*'
@@ -23,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       selenium:
-        image: selenium/standalone-${{ github.event.inputs.browser }}
+        image: selenium/standalone-chrome:110.0
         options: --shm-size=2gb
 
     steps:
