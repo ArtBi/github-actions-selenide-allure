@@ -76,10 +76,3 @@ The project uses GitHub Actions for continuous integration. The workflow is defi
 
 
 
-
-
-[![Allure Report Screen Shot](https://artbi.github.io/test_coverage)](https://artbi.github.io/test_coverage)
-
-
-
-
