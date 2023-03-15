@@ -23,9 +23,9 @@ public class BaseTest {
 
     @BeforeAll
     public static void setUpAll() {
+        Configuration.baseUrl = "https://github.com";
         Configuration.driverManagerEnabled = true;
-        Configuration.remote = "http://localhost:4444";
-        Configuration.baseUrl = "https://www.google.com";
+        Configuration.holdBrowserOpen = true;
 
 
         ChromeOptions options = new ChromeOptions();
@@ -53,7 +53,7 @@ public class BaseTest {
     @AfterEach
     public void stopDriver() throws IOException {
         if (WebDriverRunner.hasWebDriverStarted()) {
-            WebDriverRunner.getWebDriver().close();
+            WebDriverRunner.getWebDriver().quit();
             locatorsListener.addAttachment();
         }
     }
