@@ -24,9 +24,6 @@ public class BaseTest {
     @BeforeAll
     public static void setUpAll() {
         Configuration.baseUrl = "https://github.com";
-        Configuration.driverManagerEnabled = true;
-        Configuration.holdBrowserOpen = true;
-
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");

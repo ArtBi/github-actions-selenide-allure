@@ -15,13 +15,11 @@ public class UserOnResultPage extends GitHubUser {
         github.results.shouldHave(size(number));
         return this;
     }
-
     @Step("User expects result {0} with text: {1}")
     public UserOnResultPage expectedResultWithText(int index, String text) {
         github.results.get(index).shouldHave(text(text));
         return this;
     }
-
     @Step("User follow {0} repo link")
     public UserOnResultPage followRepoLink(int index) {
         github.resultsLink(index).click();
