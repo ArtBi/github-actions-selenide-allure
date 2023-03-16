@@ -1,7 +1,6 @@
-# test_coverage
+# github-actions-selenide-allure
 
-
-[![Build Status](https://github.com/ArtBi/test_coverage/actions/workflows/chrome-test-execution.yml/badge.svg)](https://github.com/ArtBi/test_coverage/actions/workflows/chrome-test-execution.yml)
+[![Build Status](https://github.com/ArtBi/github-actions-selenide-allure/actions/workflows/chrome-test-execution.yml/badge.svg)](https://github.com/ArtBi/github-actions-selenide-allure/actions/workflows/chrome-test-execution.yml)
 
 ## Description
 
@@ -25,7 +24,7 @@ This project is an example of an automation test framework created to study the 
 
 1. Clone the repository:
  ```sh
-  git clone https://github.com/ArtBi/test_coverage.git
+  git clone https://github.com/ArtBi/github-actions-selenide-allure.git
   ```
 2. Build the project 
 * For running on local Chrome Browser: 
@@ -62,7 +61,7 @@ The project uses GitHub Actions for continuous integration. The workflow is defi
 
 ## GitHub Page
 
-[![Allure Report Screen Shot](https://www.softwaretestingmagazine.com/wp-content/uploads/allure-e1613467667693.jpg)](https://artbi.github.io/test_coverage)
+[![Allure Report Screen Shot](https://www.softwaretestingmagazine.com/wp-content/uploads/allure-e1613467667693.jpg)](https://artbi.github.io/github-actions-selenide-allure)
 
 
 ## Roadmap
