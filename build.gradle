@@ -45,7 +45,7 @@ dependencies {
 test {
     systemProperty 'selenide.remote', System.getProperty('selenide.remote')
     useJUnitPlatform()
-    maxParallelForks = Runtime.getRuntime().availableProcessors()
+    maxParallelForks = 2 //Runtime.getRuntime().availableProcessors()
 
     systemProperty 'junit.jupiter.execution.parallel.mode.default', 'same_thread'
     systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', 'concurrent'
