@@ -1,3 +1,3 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Mar 16 10:44:03 GMT 2023","Thu Mar 16 10:44:10 GMT 2023","6628","","io.artbi.automation.test_coverage.MainPageTest","","io.artbi.automation.test_coverage.MainPageTest","searchPage","searchPage()","Search test for new user using Page Object"
-"passed","Thu Mar 16 10:43:55 GMT 2023","Thu Mar 16 10:44:03 GMT 2023","8176","","io.artbi.automation.test_coverage.MainPageTest","","io.artbi.automation.test_coverage.MainPageTest","search","search()","Search test for new user using Step Object"
+"passed","Thu Mar 16 10:55:08 GMT 2023","Thu Mar 16 10:55:14 GMT 2023","5816","","io.artbi.automation.test_coverage.MainPageTest","","io.artbi.automation.test_coverage.MainPageTest","searchPage","searchPage()","Search test for new user using Page Object"
+"passed","Thu Mar 16 10:54:59 GMT 2023","Thu Mar 16 10:55:08 GMT 2023","8760","","io.artbi.automation.test_coverage.MainPageTest","","io.artbi.automation.test_coverage.MainPageTest","search","search()","Search test for new user using Step Object"
