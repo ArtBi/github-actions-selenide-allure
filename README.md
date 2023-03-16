@@ -26,25 +26,45 @@ This project is an example of an automation test framework created to study the 
  ```sh
   git clone https://github.com/ArtBi/github-actions-selenide-allure.git
   ```
-2. Build the project 
-* For running on local Chrome Browser: 
+
+2. Build the project
+
+* For running on local Chrome Browser:
+
 ```sh 
 ./gradlew clean build
 ```
+
 3. If you want to run test into docker container:
+
 ```sh 
-docker run -d --name selenium -p 4444:4444 selenium/standalone-chrome
+docker docker run --rm -it -p 4444:4444 -p 7900:7900 --shm-size 2g selenium/standalone-chrome:110.0
 ```
 
+P.S. Use the following URL for watching your tests run in the docker:
+
+```url 
+http://localhost:7900/ 
+```
+
+Default password:
+
+```pas 
+secret
+```
 
 ## Usage
 
 1. Run the tests:
+
 * For local run:
+
 ```sh 
 ./gradlew clean test allureReport
 ```
+
 * For run into docker:
+
 ```sh 
 ./gradlew clean test -Dselenide.remote=http://localhost:4444/wd/hub allureReport
 ```
