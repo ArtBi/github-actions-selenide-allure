@@ -6,6 +6,8 @@ import io.artbi.automation.test_coverage.steps.GitHubUser;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
@@ -13,12 +15,13 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
+@Execution(ExecutionMode.CONCURRENT)
 public class MainPageTest extends BaseTest {
-    private GitHubWelcomePage github = new GitHubWelcomePage();
+    private final GitHubWelcomePage github = new GitHubWelcomePage();
 
 
     @Test
-    @Feature("Searchi on welcome page")
+    @Feature("Searching on welcome page")
     @Description("Search test for new user using Step Object")
     public void search() {
         new GitHubUser().openGitHub()

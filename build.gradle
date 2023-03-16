@@ -37,13 +37,21 @@ dependencies {
     implementation('org.projectlombok:lombok:1.18.26')
 
     testImplementation('org.slf4j:slf4j-simple:1.7.30')
+    testImplementation("org.junit.jupiter:junit-jupiter:${junitVersion}")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
 test {
     systemProperty 'selenide.remote', System.getProperty('selenide.remote')
     useJUnitPlatform()
+    maxParallelForks = Runtime.getRuntime().availableProcessors()
+
+    systemProperty 'junit.jupiter.execution.parallel.mode.default', 'same_thread'
+    systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', 'concurrent'
+    systemProperty 'junit.jupiter.execution.parallel.config.strategy', 'fixed'
+    systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
+    systemProperty 'junit.jupiter.execution.parallel.config.fixed.parallelism', '4'
 }
 
 allure {
