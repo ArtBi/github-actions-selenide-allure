@@ -35,7 +35,7 @@ This project is an example of an automation test framework created to study the 
 ./gradlew clean build
 ```
 
-3. If you want to run test into docker container:
+3. If you want to run test in docker container:
 
 ```sh 
 docker docker run --rm -it -p 4444:4444 -p 7900:7900 --shm-size 2g selenium/standalone-chrome:110.0
@@ -57,18 +57,19 @@ secret
 
 1. Run the tests:
 
-* For local run:
+* For local running:
 
 ```sh 
 ./gradlew clean test allureReport
 ```
 
-* For run into docker:
+* For running into docker:
 
 ```sh 
 ./gradlew clean test -Dselenide.remote=http://localhost:4444/wd/hub allureReport
 ```
-2. For oppening Allure Report page execute the following screept:
+
+2. For opening Allure Report execute the following script:
 ```sh 
 build/allure/commandline/bin/allure serve --port 3333 \
    build/allure-results
