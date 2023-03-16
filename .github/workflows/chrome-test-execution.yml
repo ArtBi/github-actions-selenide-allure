@@ -19,9 +19,26 @@ jobs:
           java-version: "11"
           distribution: "temurin"
 
-      - name: Start Selenium Docker container
+      # Cache Gradle dependencies
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: gradle-
+
+      # Build the Docker image
+      - name: Build Docker Image
         run: |
           docker run -d --name selenium -p 4444:4444 selenium/standalone-chrome
+
+      # Cache Docker layers
+      - name: Cache Docker Layers
+        uses: actions/cache@v2
+        with:
+          path: /var/lib/docker
+          key: docker-${{ hashFiles('**/Dockerfile') }}
+          restore-keys: docker-
 
       - name: Run WebDriver tests with Gradle
         run: |
