@@ -88,9 +88,10 @@ The project uses GitHub Actions for continuous integration. The workflow is defi
 
 - [x] Add GitHub Action
 - [x] Add generation Allure Report as GitHub Page
+- [x] Add parallel execution of test
 - [ ] Add Jira integrations:
-    - [ ] Add Jira TestCase links for each test 
-    - [ ] Add the possibility of setting statuses for each test in the JIRA test suite
+  - [ ] Add Jira TestCase links for each test
+  - [ ] Add the possibility of setting statuses for each test in the JIRA test suite
 
 
 
