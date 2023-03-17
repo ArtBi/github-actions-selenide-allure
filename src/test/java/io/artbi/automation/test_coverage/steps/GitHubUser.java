@@ -16,9 +16,9 @@ public class GitHubUser {
     }
 
     @Step("User search the following text: {0}")
-    public UserOnResultPage search(String text) {
+    public UserOnResultsPage search(String text) {
         this.github.searchInput.setValue(text).pressEnter();
-        return new UserOnResultPage();
+        return new UserOnResultsPage();
     }
 
 }
