@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 @Execution(ExecutionMode.CONCURRENT)
-public class MainPageTest extends BaseTest {
+public class SearchTests extends CommonTestLogic {
     private final GitHubWelcomePage welcomePage = new GitHubWelcomePage();
     private final GitHubSearchingResultsPage searchingResultsPage = new GitHubSearchingResultsPage();
     private final GitHubRepoPage repoPage = new GitHubRepoPage();
@@ -52,7 +52,7 @@ public class MainPageTest extends BaseTest {
                     .setValue("Selenide")
                     .pressEnter();
         });
-        step("Page with results has list of 10 repos ", () -> {
+        step("Page with results has list of 10 repositories", () -> {
             searchingResultsPage.results.shouldHave(size(10));
         });
 

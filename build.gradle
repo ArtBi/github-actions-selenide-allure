@@ -23,7 +23,7 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-tasks.register('coppyExecutor', Copy) {
+tasks.register('copyExecutor', Copy) {
     from file("allure/executor.json")
     into file("build/allure-results")
 }

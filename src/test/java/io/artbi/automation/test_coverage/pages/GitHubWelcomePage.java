@@ -1,12 +1,11 @@
 package io.artbi.automation.test_coverage.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class GitHubWelcomePage {
 
-    public SelenideElement searchInput = $(By.name("q"));
+    public SelenideElement searchInput = $x("//*[@name='q']");
 
 }

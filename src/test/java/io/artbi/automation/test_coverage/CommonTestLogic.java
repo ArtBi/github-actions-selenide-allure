@@ -17,7 +17,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class BaseTest {
+public class CommonTestLogic {
 
     private MyLocatorListener locatorsListener;
 
